@@ -7,8 +7,9 @@
 * Repo owner 
 
 ## Definition
-- The configuration will deploy your infrastructure on different regions while using the same template.
+- This configuration will deploy your infrastructure on different regions while using the same template.
 - Each workspace will use the same statefile for different regions. 
+- This is a demo to demonstrate contains function.
 
 ## Prerequisite
 - Change the s3 bucket to yours.
@@ -18,7 +19,7 @@
 - set region dynamically in locals.tf
 - configure provider to use selected region in provider.tf
 
-## make sure your on the right workspace (dev, stage. prod)
+## Make sure your on the right workspace (dev, stage. prod)
 - Inintialize and create workspace as required.
 ```
 terraform init --backend-config=../config/dev.conf
@@ -27,7 +28,7 @@ terraform workspace new dev
 terraform workspace select dev
 ```
 
-## Command Line
+## Plan & Apply
 - When running terraform plan or apply, pass the environment and region dynamically.
 ```
 # Plan for dev in us-east-1
@@ -39,5 +40,5 @@ terraform plan -var-file=tfvars/dev.tfvars -var="region=us-west-2"
 terraform apply -var-file=tfvars/dev.tfvars -var="region=us-west-2"
 ```
 
-## troubleshooting
+## Troubleshooting
 TF_LOG=DEBUG terraform plan -var-file=tfvars/dev.tfvars
